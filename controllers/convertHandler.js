@@ -5,7 +5,7 @@ function ConvertHandler() {
     if(input.match(/^([\d\/\.]+)([\w]+)$/)==null){
       return 1
     }
-    if(/\/.\//.test(input)){
+    if(/\/.*\//.test(input)){
       return 'invalid number'
     }
     result = eval(input.match(/^([\d\/\.]+)([\w]+)$/)[1])
@@ -34,20 +34,19 @@ function ConvertHandler() {
         result = 'gal'
         break
       case 'lbs':
-        result = 'Kg'
+        result = 'kg'
         break
       case 'kg':
         result = 'lbs'
         break
       case 'mi':
-        result = 'Km'
+        result = 'km'
         break
       case 'km':
         result = 'mi'
         break
       default:
-        result = 'invalid unit'
-        break
+        return 'invalid unit'
     }
     return result;
   };
@@ -108,7 +107,7 @@ function ConvertHandler() {
         result = initNum / miToKm
         break
       default:
-        break
+        return 0
     }
     return result.toFixed(5);
   };

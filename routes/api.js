@@ -16,6 +16,17 @@ module.exports = function (app) {
     const initUnitString = convertHandler.spellOutUnit(initUnit)
     const returnUnitString = convertHandler.spellOutUnit(returnUnit)
     const string = convertHandler.getString(initNum, initUnitString, returnNum, returnUnitString)
+
+    if(initNum=="invalid number" && initUnit=="invalid unit"){
+      res.send('invalid number and unit')
+    }
+    else if(initNum=="invalid number"){
+      res.send('invalid number')
+    }
+    else if(initUnit=="invalid unit"){
+      res.send('invalid unit')
+    }
+
     res.status(200).send({
       initNum: initNum,
       initUnit: initUnit,
